@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 462181882d18b624eb807431dc819187, type: 3}
+  m_Name: HK416
+  m_EditorClassIdentifier: 
+  gunName: HK416
+  gunDescription: "\uB3C5\uC77C\uC81C 5.56MM\uAD6C\uACBD \uB3CC\uACA9\uC18C\uCD1D
+    \uC785\uB2C8\uB2E4"
+  zoomPos: {x: -0.203, y: -0.325, z: -0.1}
+  fireDelay: 0.08
+  reloadDelay: 2
+  zoomDelay: 0.9
+  rebound: {x: 1, y: 1}
+  dmg: 25
+  fireClip: {fileID: 8300000, guid: d39d3cd35a164094d8b3a30f1c32218b, type: 3}
+  magOutClip: {fileID: 8300000, guid: 1b8167bd3fd521c4cacc9cb5e37886e5, type: 3}
+  magInClip: {fileID: 8300000, guid: 15e8cb6c3dfd20c4191a9707b2938323, type: 3}
