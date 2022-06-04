@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Train : PoolAbleObject
+public class Train : PoolAbleObject, ISubject
 {
     [SerializeField] private GameObject[] stages;
     public override void Init_Pop()
@@ -16,5 +16,20 @@ public class Train : PoolAbleObject
         {
             obj.SetActive(false);
         }
+    }
+
+    public void NotifyObserver()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void RegisterObserver(IObserver observer)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void RemoveObserver(IObserver observer)
+    {
+        throw new System.NotImplementedException();
     }
 }
