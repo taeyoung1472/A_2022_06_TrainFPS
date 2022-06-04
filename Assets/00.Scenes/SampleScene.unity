@@ -6891,7 +6891,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   length: 42.5
   initTrainCount: 5
-  backGround: {fileID: 0}
+  backGround: {fileID: 1770755757}
 --- !u!1001 &1572176534
 PrefabInstance:
   m_ObjectHideFlags: 0

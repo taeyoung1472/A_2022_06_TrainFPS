@@ -5,6 +5,7 @@ using UnityEngine;
 public class Train : PoolAbleObject, ISubject
 {
     [SerializeField] private GameObject[] stages;
+    IObserver observer;
     public override void Init_Pop()
     {
         stages[Random.Range(0, stages.Length)].SetActive(true);
@@ -17,19 +18,24 @@ public class Train : PoolAbleObject, ISubject
             obj.SetActive(false);
         }
     }
+    [ContextMenu("ÀÌÈ÷È÷")]
+    public void NOU()
+    {
+        NotifyObserver();
+    }
 
     public void NotifyObserver()
     {
-        throw new System.NotImplementedException();
+        observer.ObserverUpdate();
     }
 
-    public void RegisterObserver(IObserver observer)
+    public void RegisterObserver(IObserver _observer)
     {
-        throw new System.NotImplementedException();
+        observer = _observer;
     }
 
-    public void RemoveObserver(IObserver observer)
+    public void RemoveObserver(IObserver _observer)
     {
-        throw new System.NotImplementedException();
+        observer = null;
     }
 }
