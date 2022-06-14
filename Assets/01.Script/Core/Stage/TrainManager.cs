@@ -7,15 +7,22 @@ public class TrainManager : MonoBehaviour, IObserver
     [SerializeField] private float length;
     [SerializeField] private int initTrainCount = 5;
     [SerializeField] private GameObject backGround;
+    bool isFirst = true;
     Queue<Train> trainQueue = new Queue<Train>();
     int curTrainIndex = 0;
     float spawnPos;
 
     public void ObserverUpdate()
     {
+        if (isFirst)
+        {
+            isFirst = false;
+            return;
+        }
         SpawnTrain();
         Train tr = trainQueue.Dequeue();
         tr.transform.SetParent(backGround.transform);
+        Destroy(tr.gameObject, 10f);
     }
 
     private void Start()

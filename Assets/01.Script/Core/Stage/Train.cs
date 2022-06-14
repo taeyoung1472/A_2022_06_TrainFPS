@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.AI.Navigation;
 using UnityEngine;
 
 public class Train : PoolAbleObject, ISubject
@@ -9,19 +10,14 @@ public class Train : PoolAbleObject, ISubject
     public override void Init_Pop()
     {
         stages[Random.Range(0, stages.Length)].SetActive(true);
+        NavigationBaker.Instance.Build(GetComponent<NavMeshSurface>());
     }
-
     public override void Init_Push()
     {
         foreach (GameObject obj in stages)
         {
             obj.SetActive(false);
         }
-    }
-    [ContextMenu("ÀÌÈ÷È÷")]
-    public void NOU()
-    {
-        NotifyObserver();
     }
 
     public void NotifyObserver()
@@ -37,5 +33,10 @@ public class Train : PoolAbleObject, ISubject
     public void RemoveObserver(IObserver _observer)
     {
         observer = null;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        print(other.name);
     }
 }
