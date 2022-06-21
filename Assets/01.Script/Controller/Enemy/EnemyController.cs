@@ -11,10 +11,18 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float offset;
     [SerializeField] private AudioClip shootClip;
     [SerializeField] private float range;
+    [SerializeField] private GameObject enemy;
+    [SerializeField] private GameObject ragdoll;
+    [SerializeField] private Rigidbody spineRb;
+    [SerializeField] private LayerMask trainLayer;
+    private float hp;
+
     void Start()
     {
+        hp = 100;
         nav = GetComponent<NavMeshAgent>();
         player = GameManager.instance.Player;
+        nav.stoppingDistance = range * 0.9f;
         StartCoroutine(Check());
         StartCoroutine(Attack());
     }
@@ -39,7 +47,6 @@ public class EnemyController : MonoBehaviour
             RaycastHit hit;
             Vector3 myPos = transform.position + Vector3.up * offset;
             Vector3 playerPos = player.position + Vector3.up * offset;
-            Debug.DrawRay(myPos, (playerPos - myPos).normalized * 100, Color.cyan, 0.5f);
             if(Physics.Raycast(myPos, (playerPos - myPos).normalized, out hit))
             {
                 if(hit.transform == player)
@@ -77,8 +84,40 @@ public class EnemyController : MonoBehaviour
             yield return new WaitForSeconds(Random.Range(3f, 5f));
         }
     }
+    public void GetDamage(float value, Vector3 shootOrgin)
+    {
+        hp -= value;
+        if(hp < 0)
+        {
+            Die(shootOrgin);
+        }
+    }
+
+    public void Die(Vector3 shootOrgin)
+    {
+        //CopyOrginToRagdollTransform(enemy.transform, ragdoll.transform);
+        enemy.SetActive(false);
+        ragdoll.SetActive(true);
+        nav.enabled = false;
+        Vector3 calculDir = (transform.position - shootOrgin).normalized;
+        Vector3 realDir = new Vector3(calculDir.x, 0.5f, calculDir.z);
+        spineRb.AddForce(realDir * 50, ForceMode.Impulse);
+        StopAllCoroutines();
+    }
+    private void CopyOrginToRagdollTransform(Transform origin, Transform ragdoll)
+    {
+        for (int i = 0; i < origin.childCount; i++)
+        {
+            if(origin.childCount != 0)
+            {
+                CopyOrginToRagdollTransform(origin.GetChild(i), ragdoll.GetChild(i));
+            }
+            ragdoll.GetChild(i).localPosition = origin.GetChild(i).localPosition;
+            ragdoll.GetChild(i).localRotation = origin.GetChild(i).localRotation;
+        }
+    }
 #if UNITY_EDITOR
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, range);

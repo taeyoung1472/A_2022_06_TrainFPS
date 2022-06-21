@@ -10,7 +10,6 @@ public class Train : PoolAbleObject, ISubject
     public override void Init_Pop()
     {
         stages[Random.Range(0, stages.Length)].SetActive(true);
-        NavigationBaker.Instance.Build(GetComponent<NavMeshSurface>());
     }
     public override void Init_Push()
     {
