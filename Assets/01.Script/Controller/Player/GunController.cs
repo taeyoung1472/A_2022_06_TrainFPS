@@ -141,7 +141,7 @@ public class GunController : MonoBehaviour
         Debug.DrawRay(sight.position, sight.forward * 1000, Color.blue, 25f);
         if (Physics.Raycast(sight.position, sight.forward, out hit, 1000f, layerMask))
         {
-            hit.transform.GetComponent<HitBox>()?.GetDamage(gunData.dmg, sight.position);
+            hit.transform.GetComponent<IHitAble>()?.Hit(gunData.dmg, sight.position);
             GameObject particle = Instantiate(hitParticle, hit.point, Quaternion.identity);
             Quaternion rot = Quaternion.LookRotation(hit.normal);
             particle.transform.rotation = rot;

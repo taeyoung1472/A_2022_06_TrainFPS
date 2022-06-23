@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HitBox : MonoBehaviour
+public class HitBox : MonoBehaviour, IHitAble
 {
     [SerializeField] private float dmgFixValue;
     EnemyController controller;
@@ -10,8 +10,8 @@ public class HitBox : MonoBehaviour
     {
         controller = GetComponentInParent<EnemyController>();
     }
-    public void GetDamage(float dmg, Vector3 shootOrgin)
+    public void Hit(float power, Vector3 shootPos)
     {
-        controller.GetDamage(dmg * dmgFixValue, shootOrgin);
+        controller.GetDamage(power * dmgFixValue, shootPos);
     }
 }
