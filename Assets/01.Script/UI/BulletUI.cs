@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using DG.Tweening;
 using Random = UnityEngine.Random;
@@ -9,6 +10,9 @@ public class BulletUI : MonoBehaviour
 {
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform canvas;
+    [SerializeField] private TextMeshProUGUI tmp;
+    [Header("»ç¿îµå")]
+    [SerializeField] private AudioClip[] bulletDropClips;
     Queue<RectTransform> bulletQueue = new Queue<RectTransform>();
     public void Init(int maxBulletCount)
     {
@@ -21,6 +25,7 @@ public class BulletUI : MonoBehaviour
     }
     public void Reload()
     {
+        tmp.color = Color.white;
         foreach (var bullet in bulletQueue)
         {
             bullet.gameObject.SetActive(true);
@@ -35,9 +40,14 @@ public class BulletUI : MonoBehaviour
         transform.parent.DOShakePosition(0.1f, 10, 1000);
         StartCoroutine(DQ(rect));
     }
+    public void DryBullet()
+    {
+        tmp.color = Color.red;
+    }
     IEnumerator DQ(RectTransform rect)
     {
         yield return new WaitForSeconds(0.5f);
+        PoolManager.instance.Pop(PoolType.Sound).GetComponent<AudioPoolObject>().Play(bulletDropClips[Random.Range(0, bulletDropClips.Length)], 1f, Random.Range(0.9f, 1.1f));
         rect.gameObject.SetActive(false);
         rect.rotation = Quaternion.identity;
         bulletQueue.Enqueue(rect);

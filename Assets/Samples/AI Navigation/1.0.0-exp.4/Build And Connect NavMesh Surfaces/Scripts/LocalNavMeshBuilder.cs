@@ -15,7 +15,7 @@ namespace Unity.AI.Navigation.Samples
         /// <summary>
         /// The center of the build 
         /// </summary>
-        public Transform m_Tracked;
+        public static LocalNavMeshBuilder Instance;
 
         /// <summary>
         /// The size of the build bounds 
@@ -26,33 +26,19 @@ namespace Unity.AI.Navigation.Samples
         AsyncOperation m_Operation;
         NavMeshDataInstance m_Instance;
         List<NavMeshBuildSource> m_Sources = new List<NavMeshBuildSource>();
-    
-        IEnumerator Start()
-        {
-            while (true)
-            {
-                UpdateNavMesh(true);
-                yield return m_Operation;
-            }
-        }
-    
+
         void OnEnable()
         {
-            // Construct and add navmesh
+            // Construct and add navmesh\
+            if(Instance == null)
+            {
+                Instance = this;
+            }
             m_NavMesh = new NavMeshData();
             m_Instance = NavMesh.AddNavMeshData(m_NavMesh);
-            if (m_Tracked == null)
-                m_Tracked = transform;
             UpdateNavMesh(false);
         }
-    
-        void OnDisable()
-        {
-            // Unload navmesh and clear handle
-            m_Instance.Remove();
-        }
-    
-        void UpdateNavMesh(bool asyncUpdate = false)
+        public void UpdateNavMesh(bool asyncUpdate = false)
         {
             NavMeshSourceTag.Collect(ref m_Sources);
             var defaultBuildSettings = NavMesh.GetSettingsByID(0);
@@ -77,7 +63,7 @@ namespace Unity.AI.Navigation.Samples
         Bounds QuantizedBounds()
         {
             // Quantize the bounds to update only when theres a 10% change in size
-            var center = m_Tracked ? m_Tracked.position : transform.position;
+            var center = transform.position;
             return new Bounds(Quantize(center, 0.1f * m_Size), m_Size);
         }
     
@@ -94,7 +80,7 @@ namespace Unity.AI.Navigation.Samples
             Gizmos.DrawWireCube(bounds.center, bounds.size);
     
             Gizmos.color = Color.green;
-            var center = m_Tracked ? m_Tracked.position : transform.position;
+            var center = transform.position;
             Gizmos.DrawWireCube(center, m_Size);
         }
     }

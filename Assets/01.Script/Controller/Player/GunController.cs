@@ -14,16 +14,17 @@ public class GunController : MonoBehaviour
     [SerializeField] private GunDataSO gunData;
     [SerializeField] private Transform gunTransform;
     [SerializeField] private Animator animator;
-    [SerializeField] private Transform fireTrans;
     [SerializeField] private PlayerController playerController;
     [SerializeField] private BulletUI bulletUI;
     Vector3 gunOriginPos;
+    Transform sight;
     Camera cam;
     #endregion
 
     #region 총구 파티클
     [Header("파티클")]
     [SerializeField] private ParticleSystem[] flashEffects;
+    [SerializeField] private GameObject hitParticle;
     #endregion
 
     #region 레이어
@@ -41,10 +42,11 @@ public class GunController : MonoBehaviour
     #endregion
 
     #region 총기 제어 Bool 변수들
-    bool isCanReload = true;
     bool isCanFire = true;
     bool isCanZoom = true;
+    bool isReloading = false;
     bool isZoom = false;
+    bool isDryied = false;
     #endregion
 
     #region 애니메이터 Hash
@@ -53,6 +55,11 @@ public class GunController : MonoBehaviour
     private readonly int ZoomHash = Animator.StringToHash("Zoom");
     private readonly int ZoomInHash = Animator.StringToHash("ZoomIn");
     private readonly int ZoomOutHash = Animator.StringToHash("ZoomOut");
+    #endregion
+
+    #region GetSet 프로피터
+    public Transform Sight { set { sight = value; } }
+    public float FixSenservityValue { set { playerController.FixSenservityValue = value; } }
     #endregion
 
     void Start()
@@ -83,8 +90,17 @@ public class GunController : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitUntil(() => Input.GetKey(KeyCode.Mouse0) && curBullet > 0);
-            Fire();
+            yield return new WaitUntil(() => Input.GetKey(KeyCode.Mouse0) && !isDryied);
+            if (curBullet > 0)
+            {
+                Fire();
+            }
+            else
+            {
+                isDryied = true;
+                bulletUI.DryBullet();
+                PoolManager.instance.Pop(PoolType.Sound).GetComponent<AudioPoolObject>().Play(gunData.dryFireClip, 3f, Random.Range(0.9f, 1.1f));
+            }
             yield return new WaitForSeconds(gunData.fireDelay);
         }
     }
@@ -117,17 +133,18 @@ public class GunController : MonoBehaviour
     /// </summary>
     private void Fire()
     {
+        if (isReloading) return;
         animator.SetTrigger(FireHash);
         PoolManager.instance.Pop(PoolType.Sound).GetComponent<AudioPoolObject>().Play(gunData.fireClip, 1, Random.Range(0.9f, 1.1f));
         RaycastHit hit;
         bulletUI.ThrowBullet();
-        Debug.DrawRay(fireTrans.position, fireTrans.forward * 1000, Color.blue, 25f);
-        if (Physics.Raycast(fireTrans.position, fireTrans.forward, out hit, 1000f, layerMask))
+        Debug.DrawRay(sight.position, sight.forward * 1000, Color.blue, 25f);
+        if (Physics.Raycast(sight.position, sight.forward, out hit, 1000f, layerMask))
         {
-            hit.transform.GetComponent<HitBox>()?.GetDamage(gunData.dmg, fireTrans.position);
-            GameObject obj = null;
-
-            obj?.SetActive(true);
+            hit.transform.GetComponent<HitBox>()?.GetDamage(gunData.dmg, sight.position);
+            GameObject particle = Instantiate(hitParticle, hit.point, Quaternion.identity);
+            Quaternion rot = Quaternion.LookRotation(hit.normal);
+            particle.transform.rotation = rot;
         }
         foreach (var effect in flashEffects)
         {
@@ -141,11 +158,15 @@ public class GunController : MonoBehaviour
     /// </summary>
     private void Reload()
     {
+        if (isReloading) return;
+        isReloading = true;
         animator.SetTrigger(ReloadHash);
         Sequence seq = DOTween.Sequence();
         seq.AppendInterval(gunData.reloadDelay);
         seq.AppendCallback(() =>
         {
+            isReloading = false;
+            isDryied = false;
             curBullet = gunData.bulletAmount;
             bulletUI.Reload();
         });
@@ -158,18 +179,18 @@ public class GunController : MonoBehaviour
     /// </summary>
     void Zoom()
     {
-        if (!isCanZoom) return;
+        if (!isCanZoom || isReloading) return;
         isCanZoom = false;
         isZoom = !isZoom;
         if (isZoom)
         {
-            gunTransform.DOLocalMove(gunData.zoomPos, 1f);
+            gunTransform.DOLocalMove(gunData.zoomPos, gunData.zoomDelay);
             animator.SetTrigger(ZoomInHash);
             animator.SetFloat(ZoomHash, 1);
         }
         else
         {
-            gunTransform.DOLocalMove(gunOriginPos, 1f);
+            gunTransform.DOLocalMove(gunOriginPos, gunData.zoomDelay);
             animator.SetTrigger(ZoomOutHash);
             animator.SetFloat(ZoomHash, 0);
         }
@@ -181,6 +202,7 @@ public class GunController : MonoBehaviour
     private void ZoomInOutEnd()
     {
         isCanZoom = true;
+        playerController.UseFixValue = isZoom;
         dof.active = !isZoom;
     }
     #endregion

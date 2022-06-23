@@ -17,8 +17,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Vector2 camLimit = new Vector2(-45f, 45f);
     [SerializeField] private float senservity = 500f;
     [SerializeField] private AnimationCurve recoilControllCurve;
-    Vector2 recoil;
-    float camY;
+    private Vector2 recoil;
+    private float fixSenservityValue = 1;
+    private float camY;
+    private bool useFixValue = false;
+    #endregion
+
+    #region GetSet 프로피터
+    public float FixSenservityValue { set { fixSenservityValue = value; } }
+    public bool UseFixValue { set { useFixValue = value; } }
     #endregion
 
     #region 이동관련 변수
@@ -62,8 +69,12 @@ public class PlayerController : MonoBehaviour
     {
         float mouseX = Input.GetAxis("Mouse X");
         float mouseY = -Input.GetAxis("Mouse Y");
-        transform.rotation = transform.rotation * Quaternion.Euler(0, (mouseX + recoil.x) * Time.deltaTime * senservity, 0);//Rotate(mouseX * Time.deltaTime * senservity * Vector3.up);
-        camY += (mouseY + recoil.y) * senservity * Time.deltaTime;
+        float inputX = (mouseX + recoil.x) * (useFixValue ? fixSenservityValue : 1)
+            * senservity * Time.deltaTime;
+        float inputY = (mouseY + recoil.y) * (useFixValue ? fixSenservityValue : 1)
+            * senservity * Time.deltaTime;
+        transform.rotation = transform.rotation * Quaternion.Euler(0, inputX, 0);
+        camY += inputY;
         camY = Mathf.Clamp(camY, camLimit.x, camLimit.y);
         cam.eulerAngles = new Vector3 (camY, cam.eulerAngles.y, cam.eulerAngles.z);
     }

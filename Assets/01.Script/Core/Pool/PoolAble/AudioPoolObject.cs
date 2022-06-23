@@ -27,6 +27,7 @@ public class AudioPoolObject : PoolAbleObject
     public void Play(AudioClip clip, float volume = 1f, float pitch = 1f)
     {
         source.clip = clip;
+        source.volume = volume;
         source.Play();
         WaitForPush(source.clip.length * 1.25f);
     }

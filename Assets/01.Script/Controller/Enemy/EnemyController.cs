@@ -15,6 +15,8 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private GameObject ragdoll;
     [SerializeField] private Rigidbody spineRb;
     [SerializeField] private LayerMask trainLayer;
+    [Header("»ç¿îµå")]
+    [SerializeField] private AudioClip[] hitClips;
     private float hp;
 
     void Start()
@@ -90,12 +92,14 @@ public class EnemyController : MonoBehaviour
         if(hp < 0)
         {
             Die(shootOrgin);
+            return;
         }
+        PoolManager.instance.Pop(PoolType.Sound).GetComponent<AudioPoolObject>().Play(hitClips[Random.Range(0, hitClips.Length)], 2f, Random.Range(0.9f, 1.1f));
     }
-
     public void Die(Vector3 shootOrgin)
     {
         //CopyOrginToRagdollTransform(enemy.transform, ragdoll.transform);
+        ScoreUiManager.Instance.Add("Enemy Kill", 100, ScoreSoundType.EnemyKill);
         enemy.SetActive(false);
         ragdoll.SetActive(true);
         nav.enabled = false;

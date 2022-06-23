@@ -22,4 +22,5 @@ public class GunDataSO : ScriptableObject
     public AudioClip magOutClip;
     public AudioClip magInClip;
     public AudioClip cokeClip;
+    public AudioClip dryFireClip;
 }
