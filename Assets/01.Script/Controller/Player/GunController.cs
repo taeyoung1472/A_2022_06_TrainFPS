@@ -135,7 +135,7 @@ public class GunController : MonoBehaviour
     {
         if (isReloading) return;
         animator.SetTrigger(FireHash);
-        PoolManager.instance.Pop(PoolType.Sound).GetComponent<AudioPoolObject>().Play(gunData.fireClip, 1, Random.Range(0.9f, 1.1f));
+        PoolManager.instance.Pop(PoolType.Sound).GetComponent<AudioPoolObject>().Play(gunData.fireClip, 0.5f, Random.Range(0.9f, 1.1f));
         RaycastHit hit;
         bulletUI.ThrowBullet();
         Debug.DrawRay(sight.position, sight.forward * 1000, Color.blue, 25f);

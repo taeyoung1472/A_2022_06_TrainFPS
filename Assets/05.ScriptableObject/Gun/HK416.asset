@@ -22,7 +22,7 @@ MonoBehaviour:
   bulletAmount: 30
   recoil: {x: 1, y: 1}
   dmg: 25
-  fireClip: {fileID: 8300000, guid: 3c511169382c1f845bd78154bf2e98a6, type: 3}
+  fireClip: {fileID: 8300000, guid: 5f88355b668ab734ea49f2a51c066ebc, type: 3}
   magOutClip: {fileID: 8300000, guid: 7d3bf20e7bab1ef4aad7cc4e72c341ab, type: 3}
   magInClip: {fileID: 8300000, guid: 8d1716d2ffa5c7f4e8249762a3caffc2, type: 3}
   cokeClip: {fileID: 8300000, guid: 72b05b9fc2241d649b30a89d087ee5a6, type: 3}

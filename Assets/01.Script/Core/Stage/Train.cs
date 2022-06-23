@@ -5,11 +5,18 @@ using UnityEngine;
 
 public class Train : PoolAbleObject, ISubject
 {
+    static int prevStageIndex = -1;
     [SerializeField] private GameObject[] stages;
     IObserver observer;
     public override void Init_Pop()
     {
-        stages[Random.Range(0, stages.Length)].SetActive(true);
+        int rand = Random.Range(0, stages.Length);
+        while (rand != prevStageIndex)
+        {
+            rand = Random.Range(0, stages.Length);
+        }
+        stages[rand].SetActive(true);
+        prevStageIndex = rand;
     }
     public override void Init_Push()
     {

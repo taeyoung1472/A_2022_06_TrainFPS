@@ -47,7 +47,7 @@ public class BulletUI : MonoBehaviour
     IEnumerator DQ(RectTransform rect)
     {
         yield return new WaitForSeconds(0.5f);
-        PoolManager.instance.Pop(PoolType.Sound).GetComponent<AudioPoolObject>().Play(bulletDropClips[Random.Range(0, bulletDropClips.Length)], 1f, Random.Range(0.9f, 1.1f));
+        PoolManager.instance.Pop(PoolType.Sound).GetComponent<AudioPoolObject>().Play(bulletDropClips[Random.Range(0, bulletDropClips.Length)], 0.5f, Random.Range(0.9f, 1.1f));
         rect.gameObject.SetActive(false);
         rect.rotation = Quaternion.identity;
         bulletQueue.Enqueue(rect);
