@@ -142,9 +142,7 @@ public class GunController : MonoBehaviour
         if (Physics.Raycast(sight.position, sight.forward, out hit, 1000f, layerMask))
         {
             hit.transform.GetComponent<IHitAble>()?.Hit(gunData.dmg, sight.position);
-            GameObject particle = Instantiate(hitParticle, hit.point, Quaternion.identity);
-            Quaternion rot = Quaternion.LookRotation(hit.normal);
-            particle.transform.rotation = rot;
+            PoolManager.instance.Pop(PoolType.BulletImpact).GetComponent<ParticlePool>().Set(hit);
         }
         foreach (var effect in flashEffects)
         {

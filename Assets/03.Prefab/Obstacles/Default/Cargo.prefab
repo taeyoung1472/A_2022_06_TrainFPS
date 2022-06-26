@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 4178460777343772706}
   - component: {fileID: 2070799207326580555}
   - component: {fileID: 474845922183772916}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cargo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4178460777343772706
 Transform:
@@ -74,13 +74,45 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4178460777343772706}
     m_Modifications:
+    - target: {fileID: 100000, guid: d83401fbdd2a949ab837fbea716939f2, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: d83401fbdd2a949ab837fbea716939f2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: d83401fbdd2a949ab837fbea716939f2, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: d83401fbdd2a949ab837fbea716939f2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: d83401fbdd2a949ab837fbea716939f2, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: d83401fbdd2a949ab837fbea716939f2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: d83401fbdd2a949ab837fbea716939f2, type: 3}
       propertyPath: m_Name
       value: cargo-shipping_white
       objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: d83401fbdd2a949ab837fbea716939f2, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: d83401fbdd2a949ab837fbea716939f2, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: d83401fbdd2a949ab837fbea716939f2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: d83401fbdd2a949ab837fbea716939f2, type: 3}
       propertyPath: m_RootOrder
@@ -245,13 +277,45 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4178460777343772706}
     m_Modifications:
+    - target: {fileID: 100000, guid: b186f4310f4f84cb58d9b565c0896862, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: b186f4310f4f84cb58d9b565c0896862, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: b186f4310f4f84cb58d9b565c0896862, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: b186f4310f4f84cb58d9b565c0896862, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: b186f4310f4f84cb58d9b565c0896862, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: b186f4310f4f84cb58d9b565c0896862, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: b186f4310f4f84cb58d9b565c0896862, type: 3}
       propertyPath: m_Name
       value: cargo-shipping_red
       objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: b186f4310f4f84cb58d9b565c0896862, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: b186f4310f4f84cb58d9b565c0896862, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: b186f4310f4f84cb58d9b565c0896862, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: b186f4310f4f84cb58d9b565c0896862, type: 3}
       propertyPath: m_RootOrder
@@ -416,13 +480,45 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4178460777343772706}
     m_Modifications:
+    - target: {fileID: 100000, guid: 8988b1558edd442fda9663a0b0490542, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 8988b1558edd442fda9663a0b0490542, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 8988b1558edd442fda9663a0b0490542, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 8988b1558edd442fda9663a0b0490542, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 8988b1558edd442fda9663a0b0490542, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 8988b1558edd442fda9663a0b0490542, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: 8988b1558edd442fda9663a0b0490542, type: 3}
       propertyPath: m_Name
       value: cargo-shipping_blue
       objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: 8988b1558edd442fda9663a0b0490542, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 8988b1558edd442fda9663a0b0490542, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 8988b1558edd442fda9663a0b0490542, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 8988b1558edd442fda9663a0b0490542, type: 3}
       propertyPath: m_RootOrder
@@ -587,9 +683,41 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4178460777343772706}
     m_Modifications:
+    - target: {fileID: 100000, guid: 38e22f2aa78b5474d97dedc31c2a01be, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 38e22f2aa78b5474d97dedc31c2a01be, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 38e22f2aa78b5474d97dedc31c2a01be, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 38e22f2aa78b5474d97dedc31c2a01be, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 38e22f2aa78b5474d97dedc31c2a01be, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 38e22f2aa78b5474d97dedc31c2a01be, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: 38e22f2aa78b5474d97dedc31c2a01be, type: 3}
       propertyPath: m_Name
       value: cargo-shipping_orange
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 38e22f2aa78b5474d97dedc31c2a01be, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 38e22f2aa78b5474d97dedc31c2a01be, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 38e22f2aa78b5474d97dedc31c2a01be, type: 3}
       propertyPath: m_RootOrder
@@ -754,13 +882,45 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4178460777343772706}
     m_Modifications:
+    - target: {fileID: 100000, guid: d44ffe12d5c844c91b4a58aa1299a9f2, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: d44ffe12d5c844c91b4a58aa1299a9f2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: d44ffe12d5c844c91b4a58aa1299a9f2, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: d44ffe12d5c844c91b4a58aa1299a9f2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: d44ffe12d5c844c91b4a58aa1299a9f2, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: d44ffe12d5c844c91b4a58aa1299a9f2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: d44ffe12d5c844c91b4a58aa1299a9f2, type: 3}
       propertyPath: m_Name
       value: cargo-shipping_green
       objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: d44ffe12d5c844c91b4a58aa1299a9f2, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: d44ffe12d5c844c91b4a58aa1299a9f2, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: d44ffe12d5c844c91b4a58aa1299a9f2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: d44ffe12d5c844c91b4a58aa1299a9f2, type: 3}
       propertyPath: m_RootOrder

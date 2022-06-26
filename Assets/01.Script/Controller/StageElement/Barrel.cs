@@ -26,7 +26,7 @@ public class Barrel : ElementAudioFeedBack
             PoolManager.instance.Pop(PoolType.Sound).GetComponent<AudioPoolObject>().Play(explosionClip, 1, Random.Range(0.75f, 1.25f));
             defaultBarrel.SetActive(false);
             destroyedBarrel.SetActive(true);
-            Vector2 randXZ = Random.insideUnitCircle;
+            Vector2 randXZ = Random.insideUnitCircle * 2.5f;
             Vector3 explosionForce = new Vector3(randXZ.x, 5, randXZ.y);
             rb.AddTorque(explosionForce * 10, ForceMode.Impulse);
             rb.AddForce(explosionForce, ForceMode.Impulse);

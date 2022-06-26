@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.AI.Navigation.Samples;
+using DG.Tweening;
 public class TrainManager : MonoBehaviour, IObserver
 {
     [SerializeField] private float length;
@@ -25,6 +26,7 @@ public class TrainManager : MonoBehaviour, IObserver
         navBuilder.transform.position = tr.transform.position + Vector3.up * 3.25f + Vector3.forward * length;
         navBuilder.UpdateNavMesh();
         tr.transform.SetParent(backGround.transform);
+        tr.KillEnemy();
         ScoreUiManager.Instance.Add("Next Stage", 200, ScoreSoundType.NextStage);
         Destroy(tr.gameObject, 10f);
     }
@@ -44,6 +46,7 @@ public class TrainManager : MonoBehaviour, IObserver
         tr.RegisterObserver(this);
         tr.transform.position = new Vector3(0, 0, spawnPos);
         trainQueue.Enqueue(tr);
+        tr.SpawnEnemy();
         spawnPos += length;
         curTrainIndex++;
     }

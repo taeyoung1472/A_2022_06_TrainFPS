@@ -6,17 +6,20 @@ using UnityEngine;
 public class Train : PoolAbleObject, ISubject
 {
     static int prevStageIndex = -1;
+    [Header("스테이지")]
     [SerializeField] private GameObject[] stages;
+    int stageIdx;
+    Transform enemys;
     IObserver observer;
     public override void Init_Pop()
     {
-        int rand = Random.Range(0, stages.Length);
-        while (rand != prevStageIndex)
+        stageIdx = Random.Range(0, stages.Length);
+        while (stageIdx == prevStageIndex)
         {
-            rand = Random.Range(0, stages.Length);
+            stageIdx = Random.Range(0, stages.Length);
         }
-        stages[rand].SetActive(true);
-        prevStageIndex = rand;
+        stages[stageIdx].SetActive(true);
+        prevStageIndex = stageIdx;
     }
     public override void Init_Push()
     {
@@ -25,7 +28,21 @@ public class Train : PoolAbleObject, ISubject
             obj.SetActive(false);
         }
     }
-
+    public void SpawnEnemy()
+    {
+        enemys = stages[stageIdx].transform.Find("Enemys");
+        for (int i = 0; i < enemys.childCount; i++)
+        {
+            enemys.GetChild(i).GetComponent<EnemySpawner>().SpawnEnemy();
+        }
+    }
+    public void KillEnemy()
+    {
+        for (int i = 0; i < enemys.childCount; i++)
+        {
+            enemys.GetChild(i).GetComponent<EnemySpawner>().Kill();
+        }
+    }
     public void NotifyObserver()
     {
         observer.ObserverUpdate();

@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d219d2d94b0b93c4ba8e4ff4f903dbe5, type: 3}
+  m_Name: Tanker
+  m_EditorClassIdentifier: 
+  enemyName: Tanker
+  score: 500
+  hp: 500
+  attackDelay: 2
+  attackRange: 25
+  actually: 0.1
+  attackPerShoot: 3
+  shootDelay: 0.2
+  damage: 25
+  fireClip: {fileID: 8300000, guid: 3fa598ddbab93df4ba80aa8d6fb30c2d, type: 3}
+  hitClips:
+  - {fileID: 8300000, guid: ad920d4c61e990a4a9e0211a8f8f0a9e, type: 3}
+  - {fileID: 8300000, guid: 11f03a73f81b11f41bdc54be74d37c3e, type: 3}
+  - {fileID: 8300000, guid: 2a05dd9b7f98e8f45b1658b8af5c7255, type: 3}
+  - {fileID: 8300000, guid: e8bad4ba25e648b4da412df66161658f, type: 3}
+  - {fileID: 8300000, guid: 0efb02d442ff0194380fef79a77960cd, type: 3}
+  - {fileID: 8300000, guid: 5063210d49f330a41bd2628b39dac001, type: 3}
+  - {fileID: 8300000, guid: 0a07707581bd24a46a6ee0151c958a91, type: 3}
+  - {fileID: 8300000, guid: 3fa79433475ef234ba9727f7fb895d08, type: 3}
+  - {fileID: 8300000, guid: f903834e9f9215740bda24cae9885018, type: 3}
+  - {fileID: 8300000, guid: 4c26d57d3caecce45b9a41be1e4fc659, type: 3}
