@@ -15,12 +15,12 @@ MonoBehaviour:
   enemyName: Supporter
   score: 350
   hp: 200
-  attackDelay: 5
-  attackRange: 75
+  attackDelay: 3
+  attackRange: 50
   actually: 0.25
   attackPerShoot: 15
   shootDelay: 0.12
-  damage: 25
+  damage: 10
   fireClip: {fileID: 8300000, guid: dffe2c0c59fbd3c4ba5f4de17f240a98, type: 3}
   hitClips:
   - {fileID: 8300000, guid: ad920d4c61e990a4a9e0211a8f8f0a9e, type: 3}

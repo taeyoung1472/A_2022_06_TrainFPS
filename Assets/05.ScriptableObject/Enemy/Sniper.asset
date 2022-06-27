@@ -19,8 +19,8 @@ MonoBehaviour:
   attackRange: 100
   actually: 0.9
   attackPerShoot: 1
-  shootDelay: 0
-  damage: 50
+  shootDelay: 0.1
+  damage: 25
   fireClip: {fileID: 8300000, guid: fe936c21afd7a0c4f8fe7bf95240de9b, type: 3}
   hitClips:
   - {fileID: 8300000, guid: ad920d4c61e990a4a9e0211a8f8f0a9e, type: 3}

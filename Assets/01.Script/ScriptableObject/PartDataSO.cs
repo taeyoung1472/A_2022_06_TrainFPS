@@ -6,6 +6,7 @@ using UnityEngine;
 public class PartDataSO : ScriptableObject
 {
     public Sprite partSprite;
-    public string partName = "Part Name";
+    public ModingData modingData;
+    //public string partName = "Part Name";
     public string desc = "Part Desc";
 }

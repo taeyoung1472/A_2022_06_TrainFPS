@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: AcogSight
   m_EditorClassIdentifier: 
   partSprite: {fileID: 21300000, guid: 915b1be1c5cdfc84296fc7cd1423d9d2, type: 3}
-  partName: Acog Sight
+  modingData:
+    part: 0
+    partName: Acog
   desc: This is Acog Sight(Middle Range Sight)

@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a03f27cdadedb414da1379e8c5f27453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
+  type: 3
   defaultBarrel: {fileID: 7301815951982580851}
   destroyedBarrel: {fileID: 5224113688895188698}
   explosionClip: {fileID: 8300000, guid: 56bbb62b144102a4b91444556e75ab97, type: 3}

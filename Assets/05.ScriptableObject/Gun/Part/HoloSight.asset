@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: HoloSight
   m_EditorClassIdentifier: 
   partSprite: {fileID: 21300000, guid: 31d78fd3899d5b44b93d2ed35036d9a9, type: 3}
-  partName: Holo Sight
+  modingData:
+    part: 0
+    partName: Holo
   desc: This is Holo Sight(short Range Sight)

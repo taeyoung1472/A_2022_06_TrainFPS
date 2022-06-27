@@ -1,0 +1,15 @@
+﻿{
+    "bestScore": 0,
+    "bestTrain": 0,
+    "money": 0,
+    "modingDatas": [
+        {
+            "part": 0,
+            "partName": "Holo"
+        },
+        {
+            "part": 1,
+            "partName": "Silence"
+        }
+    ]
+}

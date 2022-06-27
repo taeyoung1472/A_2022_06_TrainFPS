@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: SniperSight
   m_EditorClassIdentifier: 
   partSprite: {fileID: 21300000, guid: cdca971824b8c40488879ee302d7b2d7, type: 3}
-  partName: Sniper Sight
+  modingData:
+    part: 0
+    partName: SniperSight
   desc: This is Sniper Sight(long Range Sight)

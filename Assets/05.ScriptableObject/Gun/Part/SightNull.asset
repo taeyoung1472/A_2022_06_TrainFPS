@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 676abb3c13f4fcc48a5be1fc8892339a, type: 3}
-  m_Name: Null
+  m_Name: SightNull
   m_EditorClassIdentifier: 
   partSprite: {fileID: 21300000, guid: c81387df8a23949d89ce75dc6dcb0ca0, type: 3}
-  partName: Empty
+  modingData:
+    part: 0
+    partName: Null
   desc: Make part to empty

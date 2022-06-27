@@ -18,7 +18,8 @@ public class GunDataSO : ScriptableObject
     [Range(10,100)] public float dmg = 25;
 
     [Header("»ç¿îµå")]
-    public AudioClip fireClip;
+    public AudioClip fireClip_default;
+    public AudioClip fireClip_Silence;
     public AudioClip magOutClip;
     public AudioClip magInClip;
     public AudioClip cokeClip;

@@ -16,6 +16,9 @@ public class GunController : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private PlayerController playerController;
     [SerializeField] private BulletUI bulletUI;
+    [SerializeField] private GameObject[] sights;
+    [SerializeField] private GameObject[] muzzels;
+    bool isSilence;
     Vector3 gunOriginPos;
     Transform sight;
     Camera cam;
@@ -80,6 +83,33 @@ public class GunController : MonoBehaviour
         curBullet = gunData.bulletAmount;
         bulletUI.Init(gunData.bulletAmount);
         gunOriginPos = gunTransform.localPosition;
+        JsonData jsonData = JsonManager.instance.Data;
+        foreach (ModingData modingData in jsonData.modingDatas)
+        {
+            if (modingData.part != ModingPart.Sight)
+                continue;
+            foreach (GameObject _sight in sights)
+            {
+                if (_sight.name == modingData.partName)
+                {
+                    _sight.SetActive(true);
+                }
+            }
+        }
+        foreach (ModingData modingData in jsonData.modingDatas)
+        {
+            if (modingData.part != ModingPart.Muzzel)
+                continue;
+            foreach (var muzzel in muzzels)
+            {
+                if (muzzel.name == modingData.partName)
+                {
+                    if(muzzel.name == "Silence")
+                        isSilence = true;
+                    muzzel.SetActive(true);
+                }
+            }
+        }
         StartCoroutine(GunSystem());
     }
     /// <summary>
@@ -135,7 +165,8 @@ public class GunController : MonoBehaviour
     {
         if (isReloading) return;
         animator.SetTrigger(FireHash);
-        PoolManager.instance.Pop(PoolType.Sound).GetComponent<AudioPoolObject>().Play(gunData.fireClip, 0.5f, Random.Range(0.9f, 1.1f));
+        AudioClip fireClip = isSilence ? gunData.fireClip_Silence : gunData.fireClip_default;
+        PoolManager.instance.Pop(PoolType.Sound).GetComponent<AudioPoolObject>().Play(fireClip, 0.5f, Random.Range(0.9f, 1.1f));
         RaycastHit hit;
         bulletUI.ThrowBullet();
         Debug.DrawRay(sight.position, sight.forward * 1000, Color.blue, 25f);

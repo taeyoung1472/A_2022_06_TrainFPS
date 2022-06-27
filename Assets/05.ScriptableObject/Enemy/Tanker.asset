@@ -16,11 +16,11 @@ MonoBehaviour:
   score: 500
   hp: 500
   attackDelay: 2
-  attackRange: 25
-  actually: 0.1
+  attackRange: 10
+  actually: 0.75
   attackPerShoot: 3
   shootDelay: 0.2
-  damage: 25
+  damage: 5
   fireClip: {fileID: 8300000, guid: 3fa598ddbab93df4ba80aa8d6fb30c2d, type: 3}
   hitClips:
   - {fileID: 8300000, guid: ad920d4c61e990a4a9e0211a8f8f0a9e, type: 3}

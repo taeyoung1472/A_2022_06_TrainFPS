@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using TMPro;
 
 public class EnemyController : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private Transform body;
     [SerializeField] private ParticleSystem[] particles;
     [SerializeField] private Transform gun;
+    [SerializeField] private TextMeshPro stateTMP;
+    [SerializeField] private Transform firePos;
     Quaternion orginRot;
 
     #region ø°¥œ∏≈¿Ã≈Õ Hash
@@ -51,15 +54,18 @@ public class EnemyController : MonoBehaviour
         switch (curState)
         {
             case AiState.Idle:
+                stateTMP.text = "";
                 animator.SetBool(moveHash, false);
                 gun.localRotation = orginRot;
                 break;
             case AiState.Chase:
+                stateTMP.text = "!";
                 animator.SetBool(moveHash, true);
                 nav.SetDestination(player.position);
                 Rotate(dir);
                 break;
             case AiState.Attack:
+                stateTMP.text = "!";
                 Rotate(dir);
                 animator.SetBool(moveHash, false);
                 break;
@@ -110,6 +116,8 @@ public class EnemyController : MonoBehaviour
             for (int i = 0; i < data.attackPerShoot; i++)
             {
                 yield return new WaitForSeconds(data.shootDelay);
+                if (curState == AiState.Idle || curState == AiState.Chase)
+                    break;
                 PoolManager.instance.Pop(PoolType.Sound).GetComponent<AudioPoolObject>().Play(data.fireClip, 1, Random.Range(0.9f,1.1f));
                 foreach (var ps in particles)
                 {
@@ -145,7 +153,28 @@ public class EnemyController : MonoBehaviour
     }
     private void ShootRay()
     {
-
+        float rand = Random.Range(0f, 1f);
+        Vector3 playerPos = player.position + Vector3.up * offset * 0.5f;
+        Vector3 dir = (playerPos - firePos.position).normalized;
+        RaycastHit hit;
+        //if(data.actually < rand)
+        //{
+        //    if(Physics.Raycast(firePos.position, dir, out hit, 1000, trainLayer)){
+        //        PoolManager.instance.Pop(PoolType.BulletImpact).GetComponent<ParticlePool>().Set(hit);
+        //    }
+        //}
+        print("ΩÙ!");
+        if(data.actually > rand)
+        {
+            print("∫¯∏¬√„!");
+            Vector3 randVec = Random.insideUnitSphere;
+            dir = (playerPos + (randVec * 2.5f)).normalized;
+        }
+        Debug.DrawRay(firePos.position, dir * 100, Color.cyan, 1f);
+        if (Physics.Raycast(firePos.position, dir, out hit, 1000, trainLayer)){
+            PoolManager.instance.Pop(PoolType.BulletImpact).GetComponent<ParticlePool>().Set(hit);
+            hit.transform.GetComponent<IHitAble>()?.Hit(data.damage, firePos.position);
+        }
     }
     private void CopyOrginToRagdollTransform(Transform origin, Transform ragdoll)
     {
