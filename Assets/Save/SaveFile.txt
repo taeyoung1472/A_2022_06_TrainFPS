@@ -5,11 +5,11 @@
     "modingDatas": [
         {
             "part": 0,
-            "partName": "Holo"
+            "partName": "Acog"
         },
         {
             "part": 1,
-            "partName": "Silence"
+            "partName": "Null"
         }
     ]
 }
