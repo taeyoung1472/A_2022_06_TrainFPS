@@ -72,4 +72,8 @@ public class MenuManager : MonoBehaviour
         enemyInfoUI.SetInfo(enemyDatas[curEnemyIdx]);
         enemyCam.DOMove(orgin + Vector3.forward * (curEnemyIdx * 3), 0.5f);//position = orgin + Vector3.forward * (curEnemyIdx * 3);
     }
+    public void Exit()
+    {
+        Application.Quit();
+    }
 }

@@ -22,6 +22,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private Transform gun;
     [SerializeField] private TextMeshPro stateTMP;
     [SerializeField] private Transform firePos;
+    public static int dieCount;
     Quaternion orginRot;
 
     #region 에니매이터 Hash
@@ -149,6 +150,7 @@ public class EnemyController : MonoBehaviour
         Vector3 realDir = new Vector3(calculDir.x, 0.5f, calculDir.z);
         spineRb.AddForce(realDir * 50, ForceMode.Impulse);
         StopAllCoroutines();
+        dieCount++;
         this.enabled = false;
     }
     private void ShootRay()

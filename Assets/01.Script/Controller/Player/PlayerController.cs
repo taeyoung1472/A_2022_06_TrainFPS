@@ -154,6 +154,8 @@ public class PlayerController : MonoBehaviour, IHitAble
         if(hp <= 0)
         {
             print("³ª Á×¾ú¾î!");
+            Time.timeScale = 0;
+            DieManager.instance.Die();
         }
     }
 }
